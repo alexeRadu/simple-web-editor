@@ -43,6 +43,10 @@
 
 		function keyPressed(e) {
 
+			/* This prevents the insertion of the key values and
+			   offers the posibility of overriding the action */
+			e.preventDefault();
+
 			if (e.ctrlKey) {
 				ctrlKeyPressed = e.ctrlKey;
 			} else {
