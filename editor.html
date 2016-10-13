@@ -41,11 +41,21 @@
 		
 		var ctrlKeyPressed = false;
 
+		var keyActionMap = {
+			48: key0Pressed,
+		}
+
+		function key0Pressed() {
+			console.log ("you pressed zero");
+		}
+
 		function keyPressed(e) {
 
 			/* This prevents the insertion of the key values and
 			   offers the posibility of overriding the action */
 			e.preventDefault();
+
+			keyActionMap[e.keyCode]();
 
 			if (e.ctrlKey) {
 				ctrlKeyPressed = e.ctrlKey;
