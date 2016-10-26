@@ -9,21 +9,22 @@
 			padding: 5px;
 			font-family: Consolas;
 			font-size: 0.8em;
+			overflow: auto;
 		}
 
-		.enumber {
+		.gutter {
 			float: left;
 			width: 30px;
 			border-right: 1px solid grey;
 		}
 
-		.erow {
+		.content {
 			float: left;
 			padding-left: 10px;
 			background-color: #ccefef;
 		}
 
-		.erow[contenteditable=true]:focus {
+		.content[contenteditable=true]:focus {
 			border: none;
 			outline: none;
 		}
@@ -31,9 +32,11 @@
 </head>
 <body>
 	<div class="editor">
-			<div class="enumber">1</div><div class="erow" contenteditable="true" onkeydown="keyPressed(event)">Something here</div><br>
-			<div class="enumber">2</div><div class="erow" contenteditable="true" onkeydown="keyPressed(event)">Hello</div><br>
-			<div class="enumber">3</div><div class="erow" contenteditable="true" onkeydown="keyPressed(event)">very veryyyyyyyyyyyyyyyyyyyyyyyy long line like this is </div><br>
+			<div class="gutter">
+				1
+			</div>
+			<div class="content" contenteditable="true" onkeydown="keyPressed(event)">
+			</div>
 	</div>
 
 	<!-- Javascript stuff -->
