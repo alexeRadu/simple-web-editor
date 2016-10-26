@@ -103,7 +103,7 @@
 				77: "m", 78: "n", 79: "o", 80: "p",
 				81: "q", 82: "r", 83: "s", 84: "t",
 				85: "u", 86: "v", 87: "w", 88: "x",
-				85: "y", 86: "z",
+				89: "y", 90: "z",
 
 				191: "slash",			/* / */
 				189: "minus",			/* - */
@@ -147,7 +147,7 @@
 		}
 
 		/* COMMANDS */
-		function insertKey() {
+		function insertChar(newChar) {
 			var contentDiv = document.getElementById("editor-content");
 			var content = contentDiv.innerHTML;
 			var selection = window.getSelection();
@@ -155,7 +155,7 @@
 			var idx = selection.anchorOffset;
 
 
-			content = content.substr(0, idx)  + key + content.substr(idx, content.length);
+			content = content.substr(0, idx)  + newChar + content.substr(idx, content.length);
 			contentDiv.innerHTML = content;
 
 			/* set cursor to idx + 1 */
@@ -167,8 +167,32 @@
 		}
 
 		var command = {
-			"a": "insertKey()",
-			"b": "insertKey()",
+			"a": "insertChar('a')",
+			"b": "insertChar('b')",
+			"c": "insertChar('c')",
+			"d": "insertChar('d')",
+			"e": "insertChar('e')",
+			"f": "insertChar('f')",
+			"g": "insertChar('g')",
+			"h": "insertChar('h')",
+			"i": "insertChar('i')",
+			"j": "insertChar('j')",
+			"k": "insertChar('k')",
+			"l": "insertChar('l')",
+			"m": "insertChar('m')",
+			"n": "insertChar('n')",
+			"o": "insertChar('o')",
+			"p": "insertChar('p')",
+			"q": "insertChar('q')",
+			"r": "insertChar('r')",
+			"s": "insertChar('s')",
+			"t": "insertChar('t')",
+			"u": "insertChar('u')",
+			"v": "insertChar('v')",
+			"w": "insertChar('w')",
+			"x": "insertChar('x')",
+			"y": "insertChar('y')",
+			"z": "insertChar('z')",
 		}
 
 		function keyPressed(e) {
