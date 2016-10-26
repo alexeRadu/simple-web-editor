@@ -153,19 +153,19 @@
 
 		/* COMMANDS */
 		function insertChar(newChar) {
-			var contentDiv = document.getElementById("editor-content");
-			var content = contentDiv.innerHTML;
-			var selection = window.getSelection();
+			var selection = document.getSelection();
+			var node = selection.anchorNode;
+			var content = node.textContent;
 			var range = document.createRange();
 			var idx = selection.anchorOffset;
 
-
+			/* modify content */
 			content = content.substr(0, idx)  + newChar + content.substr(idx, content.length);
-			contentDiv.innerHTML = content;
+			node.textContent = content;
 
-			/* set cursor to idx + 1 */
-			range.setStart(contentDiv.childNodes[0], idx + 1);
-			range.setEnd(contentDiv.childNodes[0], idx + 1);
+			/* update cursor */
+			range.setStart(node, idx + 1);
+			// range.setEnd(node, idx + 1);
 
 			selection.removeAllRanges();
 			selection.addRange(range);
