@@ -35,7 +35,7 @@
 			<div class="gutter">
 				1
 			</div>
-			<div class="content" contenteditable="true" onkeydown="keyPressed(event)">
+			<div class="content" id="editor-content" contenteditable="true" onkeydown="keyPressed(event)">
 			</div>
 	</div>
 
@@ -148,7 +148,22 @@
 
 		/* COMMANDS */
 		function insertKey() {
-			console.log(key);
+			var contentDiv = document.getElementById("editor-content");
+			var content = contentDiv.innerHTML;
+			var selection = window.getSelection();
+			var range = document.createRange();
+			var idx = selection.anchorOffset;
+
+
+			content = content.substr(0, idx)  + key + content.substr(idx, content.length);
+			contentDiv.innerHTML = content;
+
+			/* set cursor to idx + 1 */
+			range.setStart(contentDiv.childNodes[0], idx + 1);
+			range.setEnd(contentDiv.childNodes[0], idx + 1);
+
+			selection.removeAllRanges();
+			selection.addRange(range);
 		}
 
 		var command = {
@@ -166,7 +181,6 @@
 			   for later keyCombination -> function mapping */
 			processKey(e.keyCode);
 
-			// console.log("position: " + window.getSelection().anchorOffset);
 			eval(command[keyCombination]);
 		}
 	</script>
