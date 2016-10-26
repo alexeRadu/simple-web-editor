@@ -33,9 +33,14 @@
 <body>
 	<div class="editor">
 			<div class="gutter">
-				1
+				1<br>
+				2<br>
+				3<br>
 			</div>
 			<div class="content" id="editor-content" contenteditable="true" onkeydown="keyPressed(event)">
+				This is my simple web editor.<br>
+				I have created it solely for learning purposes.<br>
+				You can use it any way you want.
 			</div>
 	</div>
 
@@ -166,6 +171,10 @@
 			selection.addRange(range);
 		}
 
+		function insertNewLine() {
+		}
+
+
 		var command = {
 			/* letters */
 			"a": "insertChar('a')",
@@ -206,6 +215,8 @@
 			"7": "insertChar('7')",
 			"8": "insertChar('8')",
 			"9": "insertChar('9')",
+
+			"enter": "insertNewLine()",
 		}
 
 		function keyPressed(e) {
