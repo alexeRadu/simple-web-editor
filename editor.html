@@ -189,6 +189,13 @@
 
 			newnode = document.createElement("br");
 			parent.insertBefore(newnode, node);
+
+			/* update cursor */
+			var range = document.createRange();
+			range.setStart(node, 0);
+
+			selection.removeAllRanges();
+			selection.addRange(range);
 		}
 
 
