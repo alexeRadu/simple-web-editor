@@ -172,6 +172,23 @@
 		}
 
 		function insertNewLine() {
+			var selection = document.getSelection();
+			var node = selection.anchorNode;
+			var parent = node.parentNode;
+
+			/* split content */
+			var content = node.textContent;
+			var idx = selection.anchorOffset;
+			var contentBefore = content.substr(0, idx);
+			var contentAfter = content.substr(idx, content.length);
+
+			node.nodeValue = contentAfter;
+
+			var newnode = document.createTextNode(contentBefore);
+			parent.insertBefore(newnode, node);
+
+			newnode = document.createElement("br");
+			parent.insertBefore(newnode, node);
 		}
 
 
