@@ -22,6 +22,7 @@
 			float: left;
 			padding-left: 10px;
 			background-color: #ccefef;
+			white-space:pre;
 		}
 
 		.content[contenteditable=true]:focus {
@@ -32,16 +33,8 @@
 </head>
 <body>
 	<div class="editor">
-			<div class="gutter" id="line-numbers">
-				1<br>
-				2<br>
-				3<br>
-			</div>
-			<div class="content" id="editor-content" contenteditable="true" onkeydown="keyPressed(event)">
-				This is my simple web editor.<br>
-				I have created it solely for learning purposes.<br>
-				You can use it any way you want.
-			</div>
+			<div class="gutter" id="line-numbers">1<br>2<br>3<br></div>
+			<div class="content" id="editor-content" contenteditable="true" onkeydown="keyPressed(event)">This is my simple web editor.<br>I have created it solely for learning purposes.<br>You can use it any way you want.</div>
 	</div>
 
 	<!-- Javascript stuff -->
@@ -261,6 +254,8 @@
 			"7": "insertChar('7')",
 			"8": "insertChar('8')",
 			"9": "insertChar('9')",
+
+			"space": "insertChar(' ')",
 
 			"enter": "insertNewLine()",
 		}
