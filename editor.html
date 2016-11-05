@@ -32,7 +32,7 @@
 </head>
 <body>
 	<div class="editor">
-			<div class="gutter">
+			<div class="gutter" id="line-numbers">
 				1<br>
 				2<br>
 				3<br>
@@ -171,6 +171,25 @@
 			selection.addRange(range);
 		}
 
+		function appendLineNumber() {
+			var gutter = document.getElementById("line-numbers");
+			var nodelist = gutter.childNodes;
+
+			if (nodelist[nodelist.length - 1].nodeType == Node.ELEMENT_NODE) {
+				var lastNumber = Number(nodelist[nodelist.length - 2].nodeValue);
+
+				/* append text and a <br> */
+				gutter.appendChild(document.createTextNode(lastNumber + 1));
+				gutter.appendChild(document.createElement("br"));
+			} else {
+				var lastNumber = Number(nodelist[nodelist.length - 3].nodeValue);
+
+				/* edit last text and add a <br> */
+				nodelist[nodelist.length - 1].nodeValue = lastNumber + 1;
+				gutter.appendChild(document.createElement("br"));
+			}
+		}
+
 		function insertNewLine() {
 			var selection = document.getSelection();
 			var node = selection.anchorNode;
@@ -196,6 +215,9 @@
 
 			selection.removeAllRanges();
 			selection.addRange(range);
+
+			/* add a new line number */
+			appendLineNumber();
 		}
 
 
